@@ -20,6 +20,12 @@ void draw(){
   if(lav > 200){
     speed = speed * -0.95;
     lav = 200;
+    
+    float c1 = map(mouseX,0, width,0,255);
+    
+    smooth();
+    ellipseMode(CENTER);
+    rectMode(CENTER);
 }
   translate(200,lav);
   
