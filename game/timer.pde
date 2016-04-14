@@ -6,15 +6,18 @@ class Timer {
     totalTime = tempTotalTime;
   }
 
-  void start() {
-    savedTime = millis();
+  void setTime(int t) {
+    totalTime = t;
   }
-  boolean isFinished() {
-    int passedTime = millis() - savedTime;
-    if (passedTime > totalTime) {
-      return true;
-    } else {
-      return false;
+    void start() {
+      savedTime = millis();
+    }
+    boolean isFinished() {
+      int passedTime = millis() - savedTime;
+      if (passedTime > totalTime) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
-}

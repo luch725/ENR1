@@ -3,6 +3,8 @@ class Drop {
   float speed;
   color c;
   float r;
+  //keep track of wether drop is still being used 
+  boolean finished = false;
 
 
   Drop() {
@@ -25,18 +27,22 @@ class Drop {
     }
   }
 
-  boolean reachBottem() { 
+  boolean reachedBottom() { 
     if (y > height + r * 4) {
       return true;
     } else {
       return false;
     }
   }
-  //function for when drop is caught
-  void caught() {
-    //drop stop
-    speed = 0;
-    //move drop
-    y = -1000;
+  ////function for when drop is caught
+  //void caught() {
+  //  //drop stop
+  //  speed = 0;
+  //  //move drop
+  //  y = -1000;
+  //}
+  
+  void finished(){
+    finished = true;
   }
-  }
+}
