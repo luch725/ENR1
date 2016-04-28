@@ -7,14 +7,14 @@ boolean gameOver = false;
 
 int score = 0;
 int level = 1;
-int lives = 3;
+int lives = 5;
 int levelCounter = 0;
 PFont f;
 
 void setup() {
   size(640, 360);
   catcher = new Catcher(32);
-  drops = new Drop[50];
+  drops = new Drop[25];
   timer = new Timer(300);
   timer.start();
   noCursor();
@@ -22,9 +22,13 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(random(255),random(255),random(255));
 
   if (gameOver) {
+    textFont(f, 48);
+    textAlign(CENTER);
+    fill(255, 0, 0);
+    text("you're trash kys", width/2, height/2);
   } else {
 
     catcher.setLocation(mouseX, mouseY);
@@ -35,7 +39,7 @@ void draw() {
       //int one drop
 
       //increment drop below..
-      totalDrops++;
+      //totalDrops++;
       if (totalDrops < drops.length) {
         drops[totalDrops] = new Drop();
         totalDrops ++;
@@ -69,9 +73,17 @@ void draw() {
     if (levelCounter >= drops.length) {
       level++;
       levelCounter = 0;
-      lives = 3;
+      lives = 5;
       totalDrops = 0;
       timer.setTime(constrain(300 - level * 25, 0, 300));
     }
+    textFont(f, 14);
+    fill(0); 
+    text("lives left:" + lives, 10, 20);
+    rect(10, 24, lives * 10, 10);
+
+    text("level:" + level, 300, 20);
+
+    text("score:" + score, 300, 40);
   }
 }
